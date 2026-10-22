@@ -125,8 +125,8 @@ function Index() {
                 <img
                   src={profilePhoto.url}
                   alt="Omar Mostafa Aldahshoury"
-                  width={760}
-                  height={760}
+                  width={640}
+                  height={640}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
