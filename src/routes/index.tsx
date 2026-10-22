@@ -174,7 +174,7 @@ function Index() {
       </Section>
 
       <Section id="projects" eyebrow="featured projects" title="Selected work">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-stretch gap-6 md:grid-cols-2">
           <CarProjectCard />
           {[
             {
@@ -191,11 +191,6 @@ function Index() {
                   alt: "Healthcare dashboard: monthly visit counts, patient gender split, payment method and visit type breakdowns",
                 },
               ],
-            },
-            {
-              title: "Personal Portfolio & E-commerce App",
-              desc: "A responsive portfolio and e-commerce web app built with modern frontend tooling.",
-              tags: ["React", "Vite", "Bootstrap"],
             },
           ].map((p) => <ProjectCard key={p.title} p={p} />)}
         </div>
