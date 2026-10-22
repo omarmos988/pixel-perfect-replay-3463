@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import {
-  Mail, MapPin, Linkedin, Github, Phone, Download, ArrowRight, Send, ImageIcon,
+  Mail, MapPin, Linkedin, Github, Phone, Download, ArrowRight, Send, ImageIcon, Check,
   TrendingUp, Database, Presentation, BarChart3, Sigma, Filter, Code2, FileSpreadsheet,
   Network, LayoutDashboard, Wind, Layers, Container, Cloud, Server, Users, Award, Trophy,
   GraduationCap, BadgeCheck, Languages, Briefcase, Menu, X,
@@ -180,6 +180,11 @@ function Index() {
             {
               title: "Healthcare Analytics Dashboard",
               desc: "Analyzed 23.8K+ patient visit records and $92.3M+ in treatment costs, tracking 61.36% YoY revenue growth.",
+              points: [
+                "Revenue by department, insurance provider mix and doctor performance",
+                "Monthly visit trends, patient gender split, payment method and visit type breakdowns",
+                "Satisfaction versus length-of-stay analysis with year, month and doctor slicers",
+              ],
               tags: ["Power BI", "DAX", "Data Modeling"],
               images: [
                 {
@@ -293,6 +298,7 @@ type Project = {
   title: string;
   desc: string;
   tags: string[];
+  points?: string[];
   images?: { src: string; alt: string }[];
 };
 
@@ -340,8 +346,18 @@ function ProjectCard({ p }: { p: Project }) {
 
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-lg font-semibold">{p.title}</h3>
-        <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.desc}</p>
-        <div className="mt-4 flex flex-wrap gap-2">
+        <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
+        {p.points && (
+          <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+            {p.points.map((point) => (
+              <li key={point} className="flex gap-2">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        <div className="mt-auto flex flex-wrap gap-2 pt-5">
           {p.tags.map((x) => (
             <span key={x} className="rounded-full bg-primary/10 px-3 py-1 font-mono text-xs text-primary">{x}</span>
           ))}
