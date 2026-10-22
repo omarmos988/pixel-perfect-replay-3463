@@ -1,13 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import {
-  Mail, MapPin, Linkedin, Github, Phone, Download, ArrowRight, Send, User, ImageIcon,
+  Mail, MapPin, Linkedin, Github, Phone, Download, ArrowRight, Send, ImageIcon,
   TrendingUp, Database, Presentation, BarChart3, Sigma, Filter, Code2, FileSpreadsheet,
   Network, LayoutDashboard, Wind, Layers, Container, Cloud, Server, Users, Award, Trophy,
   GraduationCap, BadgeCheck, Languages, Briefcase, Menu, X,
 } from "lucide-react";
 import healthcareDepartments from "@/assets/healthcare-dashboard-departments.png.asset.json";
 import healthcareVisits from "@/assets/healthcare-dashboard-visits.png.asset.json";
+import profilePhoto from "@/assets/profile.jpg.asset.json";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
@@ -120,9 +121,14 @@ function Index() {
           <div className="order-1 flex justify-center md:order-2">
             <div className="relative">
               <div className="absolute -inset-1 rounded-full bg-gradient-primary opacity-70 blur-md" />
-              <div className="relative flex h-60 w-60 items-center justify-center rounded-full border-4 border-background bg-card md:h-80 md:w-80">
-                <User className="h-24 w-24 text-muted-foreground/50" />
-                <span className="absolute bottom-6 text-xs text-muted-foreground">Profile photo</span>
+              <div className="relative h-60 w-60 overflow-hidden rounded-full border-4 border-background bg-card md:h-80 md:w-80">
+                <img
+                  src={profilePhoto.url}
+                  alt="Omar Mostafa Aldahshoury"
+                  width={640}
+                  height={640}
+                  className="h-full w-full object-cover object-center"
+                />
               </div>
               <span className="glass absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-semibold text-primary">● Open to work</span>
             </div>
