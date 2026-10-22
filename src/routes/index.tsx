@@ -319,26 +319,27 @@ function ProjectCard({ p }: { p: Project }) {
             <span className="text-xs">Dashboard screenshot</span>
           </div>
         )}
-        {images.length > 1 && (
-          <div className="absolute inset-x-0 bottom-0 flex justify-end gap-2 bg-gradient-to-t from-black/70 to-transparent p-2">
-            {images.map((im, i) => (
-              <button
-                key={im.src}
-                type="button"
-                onClick={() => setActive(i)}
-                aria-label={`Show screenshot ${i + 1} of ${p.title}`}
-                aria-current={i === active}
-                className={cn(
-                  "h-10 w-16 shrink-0 overflow-hidden rounded-md border-2 transition",
-                  i === active ? "border-primary" : "border-white/50 opacity-70 hover:opacity-100",
-                )}
-              >
-                <img src={im.src} alt="" className="h-full w-full object-cover object-top" />
-              </button>
-            ))}
-          </div>
-        )}
       </div>
+      {images.length > 1 && (
+        <div className="grid grid-cols-2 gap-1.5 border-b bg-muted/50 p-1.5">
+          {images.map((im, i) => (
+            <button
+              key={im.src}
+              type="button"
+              onClick={() => setActive(i)}
+              aria-label={`Show screenshot ${i + 1} of ${p.title}`}
+              aria-current={i === active}
+              className={cn(
+                "aspect-video overflow-hidden rounded-lg border-2 transition",
+                i === active ? "border-primary" : "border-transparent opacity-55 hover:opacity-100",
+              )}
+            >
+              <img src={im.src} alt="" className="h-full w-full object-cover object-top" />
+            </button>
+          ))}
+        </div>
+      )}
+
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-lg font-semibold">{p.title}</h3>
         <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.desc}</p>
