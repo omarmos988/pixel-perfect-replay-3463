@@ -1,4 +1,4 @@
 - [x] Update the car project title, description, highlights and tags.
 - [x] Add the ten received screenshots in attachment order with gallery navigation and enlarged viewing.
 - [ ] Add screenshots 11–20 after the user uploads the remaining ten files.
-- [ ] Verify gallery interaction and provide full standalone HTML/CSS code.
+- [x] Verify gallery interaction and provide full standalone HTML/CSS code.
