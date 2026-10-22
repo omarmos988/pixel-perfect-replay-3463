@@ -10,6 +10,7 @@ import healthcareDepartments from "@/assets/healthcare-dashboard-departments.png
 import healthcareVisits from "@/assets/healthcare-dashboard-visits.png.asset.json";
 import profilePhoto from "@/assets/profile.jpg.asset.json";
 import { cn } from "@/lib/utils";
+import { CarProjectCard } from "@/components/car-project-card";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -174,12 +175,8 @@ function Index() {
 
       <Section id="projects" eyebrow="featured projects" title="Selected work">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <CarProjectCard />
           {[
-            {
-              title: "Car Sales Analysis & Price Prediction",
-              desc: "End-to-end EDA, interactive Power BI dashboards, and a Python machine learning price-prediction model served through a Gradio UI.",
-              tags: ["Python", "Power BI", "ML", "Gradio"],
-            },
             {
               title: "Healthcare Analytics Dashboard",
               desc: "Analyzed 23.8K+ patient visit records and $92.3M+ in treatment costs, tracking 61.36% YoY revenue growth.",
