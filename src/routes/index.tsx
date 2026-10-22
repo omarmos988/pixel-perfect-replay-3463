@@ -6,6 +6,9 @@ import {
   Network, LayoutDashboard, Wind, Layers, Container, Cloud, Server, Users, Award, Trophy,
   GraduationCap, BadgeCheck, Languages, Briefcase, Menu, X,
 } from "lucide-react";
+import healthcareDepartments from "@/assets/healthcare-dashboard-departments.png.asset.json";
+import healthcareVisits from "@/assets/healthcare-dashboard-visits.png.asset.json";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -166,23 +169,32 @@ function Index() {
       <Section id="projects" eyebrow="featured projects" title="Selected work">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[
-            ["Car Sales Analysis & Price Prediction", "End-to-end EDA, interactive Power BI dashboards, and a Python machine learning price-prediction model served through a Gradio UI.", ["Python", "Power BI", "ML", "Gradio"]],
-            ["Healthcare Analytics Dashboard", "Analyzed 23.8K+ patient visit records and $92.3M+ in treatment costs, tracking 61.36% YoY revenue growth.", ["Power BI", "DAX", "Data Modeling"]],
-            ["Personal Portfolio & E-commerce App", "A responsive portfolio and e-commerce web app built with modern frontend tooling.", ["React", "Vite", "Bootstrap"]],
-          ].map(([t, d, tags]: any) => (
-            <article key={t} className="card-hover flex flex-col overflow-hidden rounded-2xl border bg-card">
-              <div className="grid-bg flex aspect-video items-center justify-center border-b bg-muted">
-                <div className="flex flex-col items-center gap-2 text-muted-foreground/60"><ImageIcon className="h-10 w-10" /><span className="text-xs">Dashboard screenshot</span></div>
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-lg font-semibold">{t}</h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{d}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {tags.map((x: string) => <span key={x} className="rounded-full bg-primary/10 px-3 py-1 font-mono text-xs text-primary">{x}</span>)}
-                </div>
-              </div>
-            </article>
-          ))}
+            {
+              title: "Car Sales Analysis & Price Prediction",
+              desc: "End-to-end EDA, interactive Power BI dashboards, and a Python machine learning price-prediction model served through a Gradio UI.",
+              tags: ["Python", "Power BI", "ML", "Gradio"],
+            },
+            {
+              title: "Healthcare Analytics Dashboard",
+              desc: "Analyzed 23.8K+ patient visit records and $92.3M+ in treatment costs, tracking 61.36% YoY revenue growth.",
+              tags: ["Power BI", "DAX", "Data Modeling"],
+              images: [
+                {
+                  src: healthcareDepartments.url,
+                  alt: "Healthcare dashboard: revenue by department, insurance provider mix, satisfaction versus length of stay, and doctor performance",
+                },
+                {
+                  src: healthcareVisits.url,
+                  alt: "Healthcare dashboard: monthly visit counts, patient gender split, payment method and visit type breakdowns",
+                },
+              ],
+            },
+            {
+              title: "Personal Portfolio & E-commerce App",
+              desc: "A responsive portfolio and e-commerce web app built with modern frontend tooling.",
+              tags: ["React", "Vite", "Bootstrap"],
+            },
+          ].map((p) => <ProjectCard key={p.title} p={p} />)}
         </div>
         <div className="mt-10 text-center">
           <a href={GITHUB} target="_blank" rel="noreferrer" className={btnOutline}><Github className="h-4 w-4" /> View More Projects</a>
@@ -276,6 +288,67 @@ function Index() {
         © {new Date().getFullYear()} Omar Mostafa Aldahshoury · Built with data & care
       </footer>
     </div>
+  );
+}
+
+type Project = {
+  title: string;
+  desc: string;
+  tags: string[];
+  images?: { src: string; alt: string }[];
+};
+
+function ProjectCard({ p }: { p: Project }) {
+  const [active, setActive] = useState(0);
+  const images = p.images ?? [];
+  const hero = images[active] ?? images[0];
+
+  return (
+    <article className="card-hover group flex flex-col overflow-hidden rounded-2xl border bg-card">
+      <div className="grid-bg relative aspect-video overflow-hidden border-b bg-muted">
+        {hero ? (
+          <img
+            src={hero.src}
+            alt={hero.alt}
+            loading="lazy"
+            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+          />
+        ) : (
+          <div className="flex h-full flex-col items-center justify-center gap-2 text-muted-foreground/60">
+            <ImageIcon className="h-10 w-10" />
+            <span className="text-xs">Dashboard screenshot</span>
+          </div>
+        )}
+        {images.length > 1 && (
+          <div className="absolute inset-x-0 bottom-0 flex justify-end gap-2 bg-gradient-to-t from-black/70 to-transparent p-2">
+            {images.map((im, i) => (
+              <button
+                key={im.src}
+                type="button"
+                onClick={() => setActive(i)}
+                aria-label={`Show screenshot ${i + 1} of ${p.title}`}
+                aria-current={i === active}
+                className={cn(
+                  "h-10 w-16 shrink-0 overflow-hidden rounded-md border-2 transition",
+                  i === active ? "border-primary" : "border-white/50 opacity-70 hover:opacity-100",
+                )}
+              >
+                <img src={im.src} alt="" className="h-full w-full object-cover object-top" />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="text-lg font-semibold">{p.title}</h3>
+        <p className="mt-2 flex-1 text-sm text-muted-foreground">{p.desc}</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {p.tags.map((x) => (
+            <span key={x} className="rounded-full bg-primary/10 px-3 py-1 font-mono text-xs text-primary">{x}</span>
+          ))}
+        </div>
+      </div>
+    </article>
   );
 }
 
