@@ -49,7 +49,7 @@ function Typing() {
   const [text, setText] = useState("");
   const [del, setDel] = useState(false);
   useEffect(() => {
-    const w = words[i % words.length];
+    const w = words[i % words.length] ?? "";
     const t = setTimeout(() => {
       if (!del) {
         setText(w.slice(0, text.length + 1));
