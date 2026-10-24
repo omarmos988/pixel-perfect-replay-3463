@@ -111,7 +111,7 @@ function Index() {
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#projects" className={btnPrimary}>View Projects <ArrowRight className="h-4 w-4" /></a>
               <a href="#contact" className={btnOutline}>Contact Me</a>
-              <a href="/cv.pdf" download className={btnOutline}><Download className="h-4 w-4" /> Download CV</a>
+              <a href="/cv.pdf" download="Omar_Mostafa_CV.pdf" className={btnOutline}><Download className="h-4 w-4" /> Download CV</a>
             </div>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted-foreground">
               <a href={`mailto:${EMAIL}`} className="flex items-center gap-2 hover:text-primary"><Mail className="h-4 w-4 text-primary" />{EMAIL}</a>
@@ -126,7 +126,7 @@ function Index() {
               <div className="absolute -inset-1 rounded-full bg-gradient-primary opacity-70 blur-md" />
               <div className="relative h-60 w-60 overflow-hidden rounded-full border-4 border-background bg-card md:h-80 md:w-80">
                 <img
-                  src={profilePhoto.url}
+                  src="/profile.jpeg"
                   alt="Omar Mostafa Aldahshoury"
                   width={640}
                   height={640}
