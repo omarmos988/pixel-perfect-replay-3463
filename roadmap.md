@@ -2,3 +2,6 @@
 - [x] Add the ten received screenshots in attachment order with gallery navigation and enlarged viewing.
 - [ ] Add screenshots 11–20 after the user uploads the remaining ten files.
 - [x] Verify gallery interaction and provide full standalone HTML/CSS code.
+- [x] Re-frame the hero profile photo as a wider upper-body/shoulder crop with top alignment.
+- [x] Add a direct WhatsApp chat link to the hero social icons and the contact section.
+- [ ] Add the CV file behind the Download CV button once the user supplies it.

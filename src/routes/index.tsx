@@ -11,6 +11,7 @@ import healthcareVisits from "@/assets/healthcare-dashboard-visits.png.asset.jso
 import profilePhoto from "@/assets/profile.jpg.asset.json";
 import { cn } from "@/lib/utils";
 import { CarProjectCard } from "@/components/car-project-card";
+import { WhatsAppIcon, WHATSAPP_URL, WHATSAPP_LABEL } from "@/components/whatsapp-icon";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -115,6 +116,7 @@ function Index() {
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted-foreground">
               <a href={`mailto:${EMAIL}`} className="flex items-center gap-2 hover:text-primary"><Mail className="h-4 w-4 text-primary" />{EMAIL}</a>
               <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" />Zagazig, Egypt</span>
+              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="hover:text-whatsapp"><WhatsAppIcon className="h-5 w-5" /></a>
               <a href={LINKEDIN} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:text-primary"><Linkedin className="h-5 w-5" /></a>
               <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" className="hover:text-primary"><Github className="h-5 w-5" /></a>
             </div>
@@ -128,7 +130,7 @@ function Index() {
                   alt="Omar Mostafa Aldahshoury"
                   width={640}
                   height={640}
-                  className="h-full w-full object-cover object-center"
+                  className="h-full w-full object-cover object-top"
                 />
               </div>
               <span className="glass absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-semibold text-primary">● Open to work</span>
@@ -280,8 +282,20 @@ function Index() {
                   ? <a key={l} href={h} target={h.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="card-hover rounded-2xl border bg-card p-5">{inner}</a>
                   : <div key={l} className="rounded-2xl border bg-card p-5">{inner}</div>;
               })}
+              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="card-hover flex items-center gap-4 rounded-2xl border border-whatsapp/45 bg-whatsapp/10 p-5 sm:col-span-2">
+                <WhatsAppIcon className="h-6 w-6 shrink-0 text-whatsapp" />
+                <span>
+                  <p className="text-xs text-muted-foreground">WhatsApp</p>
+                  <p className="text-sm font-medium">{WHATSAPP_LABEL}</p>
+                  <p className="text-xs text-whatsapp">Chat with me now</p>
+                </span>
+                <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-whatsapp" />
+              </a>
             </div>
-            <a href={GITHUB} target="_blank" rel="noreferrer" className={`${btnOutline} mt-6`}><Github className="h-4 w-4" /> View GitHub Profile</a>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className={`${btn} bg-whatsapp text-whatsapp-foreground hover:opacity-90`}><WhatsAppIcon className="h-4 w-4" /> Chat on WhatsApp</a>
+              <a href={GITHUB} target="_blank" rel="noreferrer" className={btnOutline}><Github className="h-4 w-4" /> View GitHub Profile</a>
+            </div>
           </div>
           <ContactForm />
         </div>
