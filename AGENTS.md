@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep the car analytics project in its own card component with an explicitly ordered screenshot list so its larger gallery does not change the other project cards.
+- Render brand logos (WhatsApp and similar) as local SVG components using currentColor, and keep contact details like the chat URL and display number in that one component so every placement stays in sync; icon libraries like lucide do not ship brand marks.
