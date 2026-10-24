@@ -286,7 +286,8 @@ function Index() {
                 <WhatsAppIcon className="h-6 w-6 shrink-0 text-whatsapp" />
                 <span>
                   <p className="text-xs text-muted-foreground">WhatsApp</p>
-                  <p className="break-all text-sm font-medium">{WHATSAPP_LABEL} · chat with me now</p>
+                  <p className="text-sm font-medium">{WHATSAPP_LABEL}</p>
+                  <p className="text-xs text-whatsapp">Chat with me now</p>
                 </span>
                 <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-whatsapp" />
               </a>
