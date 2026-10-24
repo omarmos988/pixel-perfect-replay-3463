@@ -6,9 +6,6 @@ import {
   Network, LayoutDashboard, Wind, Layers, Container, Cloud, Server, Users, Award, Trophy,
   GraduationCap, BadgeCheck, Languages, Briefcase, Menu, X,
 } from "lucide-react";
-import healthcareDepartments from "@/assets/healthcare-dashboard-departments.png.asset.json";
-import healthcareVisits from "@/assets/healthcare-dashboard-visits.png.asset.json";
-import profilePhoto from "@/assets/profile.jpg.asset.json";
 import { cn } from "@/lib/utils";
 import { CarProjectCard } from "@/components/car-project-card";
 import { WhatsAppIcon, WHATSAPP_URL, WHATSAPP_LABEL } from "@/components/whatsapp-icon";
@@ -17,7 +14,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Omar Mostafa Aldahshoury — Data Engineer & Data Analyst" },
-      { name: "description", content: "Data Engineer & Power BI analyst building ETL/ELT pipelines, data warehouses and high-impact dashboards. Based in Zagazig, Egypt." },
+      { name: "description", content: "Data Engineer & Power BI analyst building ETL/ELT pipelines, data warehouses and high-impact dashboards. Based on Zagazig, Egypt." },
       { property: "og:title", content: "Omar Mostafa Aldahshoury — Data Engineer & Data Analyst" },
       { property: "og:description", content: "Transforming complex datasets into high-impact business decisions." },
       { property: "og:type", content: "website" },
@@ -190,11 +187,11 @@ function Index() {
               tags: ["Power BI", "DAX", "Data Modeling"],
               images: [
                 {
-                  src: healthcareDepartments.url,
+                  src: "/assets/healthcare-dashboard-departments.png.asset",
                   alt: "Healthcare dashboard: revenue by department, insurance provider mix, satisfaction versus length of stay, and doctor performance",
                 },
                 {
-                  src: healthcareVisits.url,
+                  src: "/assets/healthcare-dashboard-visits.png.asset",
                   alt: "Healthcare dashboard: monthly visit counts, patient gender split, payment method and visit type breakdowns",
                 },
               ],
